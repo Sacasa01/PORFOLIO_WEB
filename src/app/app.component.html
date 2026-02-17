@@ -1,0 +1,35 @@
+<div class="background-glow">
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+</div>
+
+<app-navbar 
+  [isDarkMode]="isDarkMode"
+  [currentLanguage]="currentLanguage"
+  (toggleDarkMode)="toggleDarkMode()"
+  (toggleLanguage)="toggleLanguage()"
+  (scrollToSection)="scrollToSection($event)"
+  [translations]="translations">
+</app-navbar>
+
+<main>
+  <app-about 
+    id="about"
+    [currentLanguage]="currentLanguage">
+  </app-about>
+  
+  <app-projects 
+    id="projects"
+    [currentLanguage]="currentLanguage">
+  </app-projects>
+  
+  <app-career 
+    id="career"
+    [currentLanguage]="currentLanguage">
+  </app-career>
+  
+  <app-contact 
+    id="contact"
+    [currentLanguage]="currentLanguage">
+  </app-contact>
+</main>

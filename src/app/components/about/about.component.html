@@ -1,0 +1,45 @@
+<section class="about-section">
+  <div class="container">
+    <div class="about-wrapper">
+      <!-- IMAGEN -->
+      <div class="about-image">
+        <div class="image-frame">
+          <div class="placeholder-avatar">
+            <svg viewBox="0 0 200 200" class="avatar-icon">
+              <circle cx="100" cy="60" r="35" fill="currentColor"/>
+              <path d="M 50 110 Q 50 130 100 140 Q 150 130 150 110" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="about-content">
+        <h2 *ngIf="currentLanguage === 'en'">About Me</h2>
+        <h2 *ngIf="currentLanguage === 'es'">Sobre Mí</h2>
+        
+        <p *ngIf="currentLanguage === 'en'">
+          Hey there! I'm a passionate full-stack developer who loves turning ideas into amazing digital experiences. 
+          With expertise in Angular, CSS, and more, I craft beautiful and functional web applications that make a difference.
+        </p>
+        
+        <p *ngIf="currentLanguage === 'es'">
+          ¡Hola! Soy un desarrollador full-stack apasionado que ama convertir ideas en experiencias digitales increíbles.
+          Con experiencia en Angular, CSS y más, creo aplicaciones web hermosas y funcionales que hacen una diferencia.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-tag">Angular</div>
+          <div class="skill-tag">TypeScript</div>
+          <div class="skill-tag">CSS/SCSS</div>
+          <div class="skill-tag">JavaScript</div>
+          <div class="skill-tag">HTML5</div>
+          <div class="skill-tag">Responsive</div>
+        </div>
+
+        <button class="cta-button" *ngIf="currentLanguage === 'en'">Download CV</button>
+        <button class="cta-button" *ngIf="currentLanguage === 'es'">Descargar CV</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- LOGO CON ESPADA -->
+    <div class="logo-sword">
+      <svg viewBox="0 0 100 200" class="sword-icon">
+        <!-- Hoja -->
+        <path d="M 50 20 L 45 80 L 40 140 L 50 180 L 60 140 L 55 80 Z" fill="currentColor" stroke="#ffd700" stroke-width="2"/>
+        <!-- Detalles de la hoja -->
+        <line x1="50" y1="30" x2="50" y2="150" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+        <line x1="48" y1="50" x2="52" y2="50" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+        <line x1="47" y1="80" x2="53" y2="80" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+        <line x1="46" y1="110" x2="54" y2="110" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+        <!-- Empuñadura -->
+        <rect x="40" y="165" width="20" height="25" fill="#8B4513" stroke="#5C2E0F" stroke-width="1"/>
+        <!-- Joya -->
+        <circle cx="50" cy="180" r="4" fill="#ff006e"/>
+      </svg>
+      <span class="logo-text">Santiago</span>
+    </div>
+
+    <!-- NAVEGACIÓN CENTRAL -->
+    <ul class="nav-menu">
+      <li><a (click)="onNavClick('about')" class="nav-link">{{ getLabel('about') }}</a></li>
+      <li><a (click)="onNavClick('projects')" class="nav-link">{{ getLabel('projects') }}</a></li>
+      <li><a (click)="onNavClick('career')" class="nav-link">{{ getLabel('career') }}</a></li>
+      <li><a (click)="onNavClick('contact')" class="nav-link">{{ getLabel('contact') }}</a></li>
+    </ul>
+
+    <!-- CONTROLES DERECHOS -->
+    <div class="nav-controls">
+      <!-- IDIOMA -->
+      <button class="control-btn language-btn" (click)="onToggleLanguage()" title="Toggle Language">
+        <span class="lang-text">{{ currentLanguage === 'en' ? 'EN' : 'ES' }}</span>
+      </button>
+
+      <!-- MODO OSCURO/CLARO -->
+      <button class="control-btn theme-btn" (click)="onToggleDarkMode()" [attr.aria-label]="isDarkMode ? 'Light Mode' : 'Dark Mode'">
+        <svg *ngIf="isDarkMode" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 18C6.48 18 2 13.52 2 8c0-.91.16-1.79.45-2.63C3.49 7.63 5.5 9 7.97 9c4.42 0 8-3.58 8-8 0-2.47-1.37-4.48-3.37-5.55.84-.29 1.72-.45 2.63-.45 5.52 0 10 4.48 10 10s-4.48 10-10 10z"/>
+        </svg>
+        <svg *ngIf="!isDarkMode" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 18C6.48 18 2 13.52 2 8s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm3.5 9c.83 0 1.5-.67 1.5-1.5S16.33 13 15.5 13 14 13.67 14 14.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 13 8.5 13 7 13.67 7 14.5 7.67 16 8.5 16zm3.5-6c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/>
+        </svg>
+      </button>
+
+      <!-- MENÚ HAMBURGUESA -->
+      <button class="hamburger" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MENÚ MÓVIL -->
+  <div class="mobile-menu" [class.active]="mobileMenuOpen">
+    <ul class="mobile-nav">
+      <li><a (click)="onNavClick('about')" class="mobile-nav-link">{{ getLabel('about') }}</a></li>
+      <li><a (click)="onNavClick('projects')" class="mobile-nav-link">{{ getLabel('projects') }}</a></li>
+      <li><a (click)="onNavClick('career')" class="mobile-nav-link">{{ getLabel('career') }}</a></li>
+      <li><a (click)="onNavClick('contact')" class="mobile-nav-link">{{ getLabel('contact') }}</a></li>
+    </ul>
+  </div>
+</nav>

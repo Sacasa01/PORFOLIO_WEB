@@ -1,0 +1,45 @@
+<section class="projects-section">
+  <div class="container">
+    <h2 *ngIf="currentLanguage === 'en'">My Projects</h2>
+    <h2 *ngIf="currentLanguage === 'es'">Mis Proyectos</h2>
+
+    <div class="projects-carousel">
+      <div class="carousel-track" #carouselTrack>
+        <div class="project-card" *ngFor="let project of projects; let i = index">
+          <div class="project-image" [style.background]="project.color">
+            <div class="project-placeholder">
+              <span class="project-number">{{ i + 1 }}</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>{{ currentLanguage === 'en' ? project.nameEn : project.nameEs }}</h3>
+            <p>{{ currentLanguage === 'en' ? project.descEn : project.descEs }}</p>
+            <div class="project-tags">
+              <span class="tag" *ngFor="let tech of project.tech">{{ tech }}</span>
+            </div>
+            <a class="project-link" *ngIf="currentLanguage === 'en'">View Project →</a>
+            <a class="project-link" *ngIf="currentLanguage === 'es'">Ver Proyecto →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTROLES -->
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" (click)="prevProject()" [disabled]="currentIndex === 0">
+          ← 
+        </button>
+        <div class="carousel-dots">
+          <div 
+            class="dot" 
+            *ngFor="let p of projects; let i = index"
+            [class.active]="i === currentIndex"
+            (click)="goToProject(i)">
+          </div>
+        </div>
+        <button class="carousel-btn next" (click)="nextProject()" [disabled]="currentIndex === projects.length - 1">
+          →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

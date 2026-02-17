@@ -1,1 +1,275 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  --primary-dark: #1a1a2e;
+  --secondary-dark: #16213e;
+  --accent-yellow: #ffd700;
+  --accent-blue: #0f3460;
+  --accent-cyan: #00d4ff;
+  --accent-pink: #ff006e;
+  --text-light: #f0f0f0;
+  --text-dark: #1a1a2e;
+  --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
+  
+  --color-scheme: dark;
+}
+
+:root.light-mode {
+  --primary-dark: #f5f5f5;
+  --secondary-dark: #ffffff;
+  --accent-yellow: #ffc700;
+  --accent-blue: #0066cc;
+  --text-light: #1a1a2e;
+  --text-dark: #f0f0f0;
+  --shadow-glow: 0 0 20px rgba(255, 199, 0, 0.2);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
+  --color-scheme: light;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Grande', sans-serif;
+  background: var(--primary-dark);
+  color: var(--text-light);
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+h1, h2, h3, h4 {
+  font-family: 'Arial Black', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(45deg, var(--accent-yellow), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--accent-yellow);
+  text-shadow: var(--shadow-glow);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: var(--accent-cyan);
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* ===== SCROLL ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-yellow);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes swordSwing {
+  0% {
+    transform: rotateZ(-45deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(-45deg);
+  }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideInUp 0.8s ease forwards;
+}
+
+/* ===== BOTONES ===== */
+button, .btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 3px solid var(--accent-yellow);
+  background: transparent;
+  color: var(--accent-yellow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover, .btn:hover {
+  background: var(--accent-yellow);
+  color: var(--primary-dark);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+button:active, .btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* ===== EFECTOS DE FONDO ===== */
+.background-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  blur: 100px;
+}
+
+.glow-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-yellow);
+  top: 10%;
+  right: 10%;
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+.glow-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--accent-cyan);
+  bottom: 20%;
+  left: 5%;
+  animation: floatUp 8s ease-in-out infinite 1s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  button, .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}

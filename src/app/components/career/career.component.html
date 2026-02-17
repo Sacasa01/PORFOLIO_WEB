@@ -1,0 +1,22 @@
+<section class="career-section">
+  <div class="container">
+    <h2 *ngIf="currentLanguage === 'en'">My Career</h2>
+    <h2 *ngIf="currentLanguage === 'es'">Mi Carrera</h2>
+
+    <div class="career-timeline">
+      <div class="timeline-item" *ngFor="let job of jobs; let i = index" [class.active]="i === 0">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>{{ currentLanguage === 'en' ? job.titleEn : job.titleEs }}</h3>
+          <p class="company">{{ job.company }}</p>
+          <p class="period">{{ job.period }}</p>
+          <p class="description">{{ currentLanguage === 'en' ? job.descEn : job.descEs }}</p>
+          
+          <div class="job-skills">
+            <span class="skill" *ngFor="let skill of job.skills">{{ skill }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
